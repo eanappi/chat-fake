@@ -3,7 +3,8 @@
 const questions = {
   'Como te llamas?': 'Ernesto',
   'Donde vivis?': 'Argentina',
-  'Cual es tu trabajo?': 'Desarrollador Web'
+  'Cual es tu trabajo?': 'Desarrollador Web',
+  'default': 'No comprendo tú pregunta.'
 }
 
 $('.form-chat').submit((event) => {
@@ -14,6 +15,10 @@ $('.form-chat').submit((event) => {
 
   $('.history-chat').append(`Yo: ${targetElementValue}`)
   $('.history-chat').append('<br />')
-  $('.history-chat').append(`Pepe: ${questions[targetElementValue]}`)
+  if (questions[targetElementValue] != undefined) {
+    $('.history-chat').append(`Pepe: ${questions[targetElementValue]}`)
+  } else {
+    $('.history-chat').append(`Pepe: ${questions['default']}`)
+  }
   $('.history-chat').append('<br />')
 })
